@@ -7,5 +7,6 @@ router.post('/register', Controller.registerUser)
 router.post('/login', Controller.login)
 router.use(authentication)
 router.get('/products', Controller.fetchProducts)
+router.post('/products', Controller.addProduct)
 
 module.exports = router;

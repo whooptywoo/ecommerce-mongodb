@@ -61,13 +61,47 @@ class Controller {
 	static async fetchProducts(req, res) {
 		try {
 			const products = await Product.find().populate("buyers");
-            console.log(products)
+			console.log(products);
 			res.status(200).json(products);
 		} catch (error) {
 			console.log(error);
 			res.status(500).json({ message: "Internal server error." });
 		}
 	}
+
+	static async addProduct(req, res) {
+		const { role } = req.user;
+        console.log(req.user)
+		const { name, price, image } = req.body;
+		try {
+			if (role !== "admin")
+				throw {
+					name: "Unauthorized",
+					code: 401,
+					message: "You are not authorized.",
+				};
+			const newProduct = await Product.create({ name, price, image });
+			res.status(201).json(newProduct);
+		} catch (error) {
+			if (error.name === "Unauthorized") {
+				res.status(error.code).json({ message: error.message });
+			} else {
+				console.log(error);
+				res.status(500).json({ message: "Internal server error." });
+			}
+		}
+	}
+
+    static async deleteProduct(req, res) {
+        const {id} = req.params.id;
+        const {role} = req.user;
+        try {
+            await Product.deleteOne()
+        } catch (error) {
+            console.log(error);
+			res.status(500).json({ message: "Internal server error." });
+        }
+    }
 }
 
 module.exports = Controller;

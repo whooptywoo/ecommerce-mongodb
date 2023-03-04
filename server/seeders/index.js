@@ -1,8 +1,12 @@
 const fs = require ('fs')
 const User = require("../models/User");
 const Product = require("../models/Product")
-const userData = JSON.parse(fs.readFileSync('./users.json', 'utf-8'))
+const {hashPassword} = require('../helpers/bcrypt')
 const productData = JSON.parse(fs.readFileSync('./products.json', 'utf-8'))
+const userData = JSON.parse(fs.readFileSync('./users.json', 'utf-8')).map(el => {
+    el.password = hashPassword(el.password)
+    return el
+})
 
 async function runSeed() {
     await User.deleteMany({})
@@ -19,28 +23,6 @@ module.exports = runSeed
 
 
 
-// async function seedUser() {
-//     const uri = "mongodb+srv://whooptywoo:x3QHQwSMvaHTQ15F@cluster0.qzsydtt.mongodb.net/?retryWrites=true&w=majority"
-//     const client = new MongoClient(uri, {
-//         useNewUrlParser: true,
-//     })
-//     try {
-//         await client.connect();
-//         console.log("Success connect");
-//         const userCollection = client.db("egroceries").collection("users");
-//         const productCollection = client.db("egroceries").collection("products");
-//         userCollection.drop();
-//         productCollection.drop();
-//         userCollection.insertMany(users);
-//         productCollection.insertMany(products);
-//         console.log("Database seeded")
-//         // client.close();
-//     } catch (err) {
-//         console.log(err.stack)
-//     }
-// }
-
-// seedUser()
 
 
 

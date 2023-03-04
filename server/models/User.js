@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema({
 	fullName: String,
 	email: String,
 	password: String,
+	role: String,
 	transactions: [
 		{
 			type: mongoose.Schema.Types.ObjectId,

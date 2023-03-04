@@ -14,7 +14,7 @@ const authentication = async (req, res, next) => {
 		req.user = {
 			id,
 			email,
-			// role,
+			role,
 			fullName,
 		};
 		next();
