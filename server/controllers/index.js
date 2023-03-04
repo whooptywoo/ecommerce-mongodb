@@ -8,6 +8,13 @@ class Controller {
 		const { fullName, email, password, phoneNumber } = req.body;
 		try {
 			const hashedPassword = hashPassword(password);
+			const userSameEmail = await User.findOne({ email });
+			if (userSameEmail)
+				throw {
+					name: "ValidationError",
+					code: 400,
+					message: "Email is already registered.",
+				};
 			const newUser = await User.create({
 				fullName,
 				email,
@@ -17,6 +24,10 @@ class Controller {
 			});
 			res.status(201).json({ id: newUser.id, email: newUser.email });
 		} catch (error) {
+			if (error.name === "ValidationError") {
+				res.status(error.code).json({ message: error.message });
+				return;
+			}
 			console.log(error);
 			res.status(500).json({ message: "Internal server error." });
 		}
