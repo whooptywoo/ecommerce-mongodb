@@ -8,25 +8,25 @@
 	{
 		"fullName": "Cleo McMillian",
 		"email": "cmcmillian1@bizjournals.com",
-		"role": "user",
+		"role": "customer",
 		"password": "password"
 	},
 	{
 		"fullName": "Granger De Benedetti",
 		"email": "gde2@mail.ru",
-		"role": "user",
+		"role": "customer",
 		"password": "password"
 	},
 	{
 		"fullName": "Estella Trinke",
 		"email": "etrinke3@printfriendly.com",
-		"role": "user",
+		"role": "customer",
 		"password": "password"
 	},
 	{
 		"fullName": "Pietrek Scuse",
 		"email": "pscuse4@phoca.cz",
-		"role": "user",
+		"role": "customer",
 		"password": "password"
 	}
 ]

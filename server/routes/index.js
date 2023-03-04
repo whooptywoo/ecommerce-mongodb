@@ -8,5 +8,8 @@ router.post('/login', Controller.login)
 router.use(authentication)
 router.get('/products', Controller.fetchProducts)
 router.post('/products', Controller.addProduct)
+router.delete('/products/:id', Controller.deleteProduct)
+router.patch('/products/:id', Controller.addToCart)
+router.put('/products/:id', Controller.editProductInfo)
 
 module.exports = router;
