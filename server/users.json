@@ -1,0 +1,32 @@
+[
+	{
+		"fullName": "Jennie Josefsson",
+		"email": "jjosefsson0@economist.com",
+		"role": "admin",
+		"password": "password"
+	},
+	{
+		"fullName": "Cleo McMillian",
+		"email": "cmcmillian1@bizjournals.com",
+		"role": "user",
+		"password": "password"
+	},
+	{
+		"fullName": "Granger De Benedetti",
+		"email": "gde2@mail.ru",
+		"role": "user",
+		"password": "password"
+	},
+	{
+		"fullName": "Estella Trinke",
+		"email": "etrinke3@printfriendly.com",
+		"role": "user",
+		"password": "password"
+	},
+	{
+		"fullName": "Pietrek Scuse",
+		"email": "pscuse4@phoca.cz",
+		"role": "user",
+		"password": "password"
+	}
+]
