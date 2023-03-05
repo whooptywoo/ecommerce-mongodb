@@ -11,9 +11,9 @@ export default function CartTable() {
 	});
 	let grandTotal = 0;
 
-	Object.values(cart).forEach(el=> {
-		grandTotal += el.subTotal
-	})
+	Object.values(cart).forEach((el) => {
+		grandTotal += el.subTotal;
+	});
 	const handleClose = () => {
 		setShowModal(false);
 	};
@@ -67,7 +67,11 @@ export default function CartTable() {
 			</Modal>
 			<button
 				className="fixed right-20 bottom-20 py-4 px-6 bg-yellow-300 text-black font-semibold text-xl"
-				onClick={() => {}}
+				onClick={() => {
+					if (cart !== {}) {
+						setShowModal(true);
+					}
+				}}
 			>
 				Check out
 			</button>
