@@ -1,13 +1,11 @@
 import Navbar from "../components/Navbar";
 import ProductTable from "../components/ProductTable";
-import TransactionTable from "../components/TransactionTable";
 
 export default function HomePage() {
 	return (
-		<div className="h-screen max-w-screen">
+		<div className="h-screen max-w-screen mt-20 relative">
 			<Navbar />
-			{/* <ProductTable /> */}
-            <TransactionTable />
+			<ProductTable />
 		</div>
 	);
 }

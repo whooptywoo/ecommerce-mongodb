@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { login } from "../store/actions/actionCreator";
+import { login, registerCust } from "../store/actions/actionCreator";
 
-export default function LoginPage() {
+export default function RegisterPage() {
 	const [form, setForm] = useState();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -14,10 +14,10 @@ export default function LoginPage() {
 		setForm(obj);
 	};
 
-	async function handleLogin(e) {
+	async function handleRegister(e) {
 		e.preventDefault();
 		try {
-			dispatch(login(form)).then(() => navigate("/"));
+			dispatch(registerCust(form)).then(() => navigate("/login"));
 		} catch (error) {
 			console.log(error);
 		}
@@ -34,11 +34,18 @@ export default function LoginPage() {
 						<h2 className="text-2xl mt-10">Your trusty shopping companion</h2>
 					</div>
 					<div className="flex flex-col items-center justify-center h-full w-1/2 gap-20">
-						<h1 className="text-xl font-bold">Please login to continue</h1>
+						<h1 className="text-xl font-bold">Create an account</h1>
 						<form
 							className="flex flex-col justify-center items-center w-3/5 gap-10"
-							onSubmit={handleLogin}
+							onSubmit={handleRegister}
 						>
+							<input
+								type="text"
+								className=" bg-gray-100 rounded-md py-4 px-4 text-sm w-4/5"
+								placeholder="Full name"
+								name="fullName"
+								onChange={changeHandler}
+							/>
 							<input
 								type="email"
 								className=" bg-gray-100 rounded-md py-4 px-4 text-sm w-4/5"
@@ -53,13 +60,13 @@ export default function LoginPage() {
 								name="password"
 								onChange={changeHandler}
 							/>
+
 							<input
 								type="submit"
 								className="w-4/5 bg-blue-600 rounded-md py-2 px-4 mt-5 text-white font-bold"
-								value="Login"
+								value="Sign Up"
 							/>
 						</form>
-						<h1>or sign up here</h1>
 					</div>
 				</div>
 			</div>

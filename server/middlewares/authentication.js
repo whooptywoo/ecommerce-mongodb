@@ -3,12 +3,10 @@ const User = require("../models/User");
 
 const authentication = async (req, res, next) => {
 	const { access_token } = req.headers;
-    console.log(access_token)
 	try {
 		if (!access_token) throw { name: "InvalidToken" };
 		const payload = verifyToken(access_token);
 		const user = await User.findById(payload.id);
-        console.log(user)
 		if (!user) throw { name: "InvalidToken" };
 		const { id, email, role, fullName } = user;
 		req.user = {

@@ -6,12 +6,7 @@ const userSchema = new mongoose.Schema({
 	email: String,
 	password: String,
 	role: String,
-	transactions: [
-		{
-			type: mongoose.Schema.Types.ObjectId,
-			ref: "Product",
-		},
-	],
+	transactions: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
 });
 
 module.exports = mongoose.model("User", userSchema);

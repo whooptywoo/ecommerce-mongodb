@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { login } from "../store/actions/actionCreator";
 
 export default function LoginPage() {
@@ -24,7 +24,7 @@ export default function LoginPage() {
 	}
 
 	return (
-		<div className="h-screen max-w-screen overflow-hidden">
+		<div className="h-screen max-w-screen">
 			<div className="bg-login bg items-center px-20 flex justify-center">
 				<div className="bg-white w-5/6 h-5/6 rounded-xl shadow-xl flex">
 					<div className="w-1/2 h-full bg-yellow-400 rounded-l-lg flex flex-col pt-40 px-10 text-blue-500">
@@ -59,7 +59,12 @@ export default function LoginPage() {
 								value="Login"
 							/>
 						</form>
-						<h1>or sign up here</h1>
+						<Link
+							to="/register"
+							className="cursor-pointer"
+						>
+							or sign up here
+						</Link>
 					</div>
 				</div>
 			</div>
